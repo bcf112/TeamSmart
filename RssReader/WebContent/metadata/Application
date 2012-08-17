@@ -1,0 +1,22 @@
+{
+    "type": "application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "models": [
+            "News"
+        ],
+        "stores": [
+            "Feed"
+        ],
+        "views": [
+            "MyPanel"
+        ],
+        "name": "MyApp"
+    },
+    "id": "ExtBox1-ext-gen2242",
+    "designerId": "application"
+}

@@ -1,0 +1,47 @@
+{
+    "type": "jsonpstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Feed",
+        "autoLoad": true,
+        "model": "News",
+        "storeId": "Feed"
+    },
+    "id": "ExtBox1-ext-gen4105",
+    "designerId": "435d15d0-f4f3-4770-ae96-1e34e3a776dc",
+    "cn": [
+        {
+            "type": "jsonpproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyJsonPProxy",
+                "url": "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://fulltextrssfeed.com/www.khan.co.kr/rss/rssdata/total_news.xml"
+            },
+            "designerId": "b84250f4-8505-430d-9ee2-51d922cd0001",
+            "cn": [
+                {
+                    "type": "jsonreader",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyJsonReader",
+                        "idProperty": null,
+                        "rootProperty": "responseData.feed.entries"
+                    },
+                    "designerId": "246b3098-854a-4cb8-a596-69d25c97dc21"
+                }
+            ]
+        }
+    ]
+}

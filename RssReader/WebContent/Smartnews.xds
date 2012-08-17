@@ -1,0 +1,72 @@
+{
+    "name": "Smartnews",
+    "settings": {
+        "urlPrefix": "localhost",
+        "spacesToIndent": 4,
+        "exportPath": "",
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "codeGenFormat": "Class",
+        "senchaIoKey": "",
+        "senchaIoPath": "http://extjs.cachefly.net/designer/IO/",
+        "instantiateStore": true,
+        "saveOnDeploy": false,
+        "appName": "MyApp"
+    },
+    "xdsVersion": "2.1.0",
+    "xdsBuild": 584,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000495,
+    "framework": "touch20",
+    "topInstanceFileMap": {
+        "e1fd377f-9fd2-4a66-a558-837a6eb0731f": {
+            "paths": [
+                "metadata/view/MyPanel",
+                "app/view/override/MyPanel.js",
+                "app/view/MyPanel.js"
+            ],
+            "className": "MyPanel"
+        },
+        "435d15d0-f4f3-4770-ae96-1e34e3a776dc": {
+            "paths": [
+                "metadata/store/Feed",
+                "app/store/override/Feed.js",
+                "app/store/Feed.js"
+            ],
+            "className": "Feed"
+        },
+        "ee79044c-b5ec-4ad8-a194-6939c9062d25": {
+            "paths": [
+                "metadata/model/News",
+                "app/model/override/News.js",
+                "app/model/News.js"
+            ],
+            "className": "News"
+        },
+        "6bdd9f4e-62f9-45e5-9f2e-e64178cad418": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "e1fd377f-9fd2-4a66-a558-837a6eb0731f"
+        ],
+        "store": [
+            "435d15d0-f4f3-4770-ae96-1e34e3a776dc"
+        ],
+        "controller": [],
+        "model": [
+            "ee79044c-b5ec-4ad8-a194-6939c9062d25"
+        ],
+        "resource": [
+            "6bdd9f4e-62f9-45e5-9f2e-e64178cad418"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

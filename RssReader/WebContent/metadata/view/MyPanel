@@ -1,0 +1,66 @@
+{
+    "type": "panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MyPanel",
+        "designer|initialView": true,
+        "layout": "card"
+    },
+    "id": "ExtBox1-ext-gen6010",
+    "designerId": "e1fd377f-9fd2-4a66-a558-837a6eb0731f",
+    "cn": [
+        {
+            "type": "titlebar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyTitleBar",
+                "docked": "top",
+                "title": "News"
+            },
+            "designerId": "1cd6cf7f-55db-4099-a846-37920f2b65e5"
+        },
+        {
+            "type": "list",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyList",
+                "store": "Feed"
+            },
+            "designerId": "5f0db198-05b5-4cd2-a268-91eb9923e182",
+            "cn": [
+                {
+                    "type": "template",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "itemTpl",
+                        "implHandler": [
+                            "<div style=\"margin-left: 62px;\">\r",
+                            "  {content}<br>\r",
+                            "</div>\r",
+                            "\r",
+                            ""
+                        ],
+                        "designer|displayName": "itemTpl"
+                    },
+                    "designerId": "ddaa90d9-621a-469e-9fe6-96fa772ede37"
+                }
+            ]
+        }
+    ]
+}
