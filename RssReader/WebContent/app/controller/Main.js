@@ -23,6 +23,7 @@ Ext.define('MyApp.controller.Main', {
             articleList:'#articlePanel',
             titlebar:'#titlebar',
             backButton:'#titlebar #prevButton',
+            detailArticle:'#detailArticle'
         },
 
         control: {
@@ -31,22 +32,29 @@ Ext.define('MyApp.controller.Main', {
             },
             '[action=back]':{
             	tap: 'onBackButtonTap'
-            }
+            },
         }
     },
     
     onArticleTap: function(dataview, index, target, record, e, options){
     	this.getMainPanel().animateActiveItem(1, { type: "slide", direction: "left" });
     	this.getArticleList().setData(record.data);
-    	this.getTitlebar().setTitle("기사 전문");
+    	this.getTitlebar().setTitle(record.data.title);
     	//this.getBackButton.show();
     	
+    	localStorage.flag = index;
+    	this.getDetailArticle().on('swipe', this.onSwipe);
+    	console.log("on function!!");
     },
     
     onBackButtonTap: function(button, event){
-    	console.log("dd");
     	this.getMainPanel().setActiveItem(0);
     	this.getList().deselectAll();
+    	this.getTitlebar().setTitle("News");
+    },
+    
+    onSwipe:function(event){
+    	console.log("swipe!!!");
     }
 
 });

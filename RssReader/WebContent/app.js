@@ -19,7 +19,8 @@ Ext.Loader.setConfig({
 
 Ext.application({
 	controllers:[
-	    'Main'
+	    'Main',
+	    'Article'
 	],
     models: [
         'News'

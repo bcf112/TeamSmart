@@ -16,7 +16,7 @@
 Ext.define('MyApp.view.MyPanel', {
     extend: 'Ext.Panel',
     xtype:"mainpanel",
-
+    
     config: {
         layout: {
             type: 'card'
@@ -37,21 +37,25 @@ Ext.define('MyApp.view.MyPanel', {
             },
             {
                 xtype: 'list',
+                cls:"newsList",
                 id:"articleList",
                 itemTpl: [
                     '<div style="margin-left: 62px;">',
-                    '<img src="{url}"/>    {title}<br>',
+                    '<img src="{url}"/> {title}<br>',
                     '</div>',
                 ],
                 store: 'Feed'
-            },{
+            },
+            {
             	layout:"fit",
-            	scrollable:true,
+        		cls:"article",
+        		id:"detailArticle",
         		items:[{
         			xtype:"panel",
-        			id:'articlePanel',
-        			tpl:'{content}'
-
+        			id:"articlePanel",
+        			tpl:"{content}",
+        			layout:"fit",
+        			styleHtmlContent:true,
         		}]
             }
         ]
