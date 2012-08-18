@@ -47,16 +47,7 @@ Ext.define('MyApp.view.MyPanel', {
                 store: 'Feed'
             },
             {
-            	layout:"fit",
-        		cls:"article",
-        		id:"detailArticle",
-        		items:[{
-        			xtype:"panel",
-        			id:"articlePanel",
-        			tpl:"{content}",
-        			layout:"fit",
-        			styleHtmlContent:true,
-        		}]
+        		xtype:"article"
             }
         ]
     }

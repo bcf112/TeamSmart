@@ -29,7 +29,7 @@ Ext.application({
     ],
     name: 'MyApp',
     controllers: [
-        'Main', 'Article'
+        'Main'
     ],
 
     launch: function() {
