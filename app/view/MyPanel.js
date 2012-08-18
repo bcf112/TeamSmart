@@ -19,32 +19,25 @@ Ext.define('MyApp.view.MyPanel', {
     
     config: {
         layout: {
-            type: 'card'
+            type:"card",
         },
         items: [
             {
                 xtype: 'toolbar',
                 id:"titlebar",
                 docked: 'top',
-                title: 'News',
+                title: '경향신문-연예',
                 items:[{
                 	xtype:"button",
                 	id:"prevButton",
                 	text:"뒤로 가기",
                 	action:"back",
                 	ui:"back",
+                	hidden:true,
                 }]
             },
             {
-                xtype: 'list',
-                cls:"newsList",
-                id:"articleList",
-                itemTpl: [
-                    '<div style="margin-left: 62px;">',
-                    '<img src="{url}"/> {title}<br>',
-                    '</div>',
-                ],
-                store: 'Feed'
+        	   	xtype: 'articlelist',
             },
             {
         		xtype:"article"

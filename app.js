@@ -25,7 +25,7 @@ Ext.application({
         'Feed'
     ],
     views: [
-        'MyPanel', 'Article'
+        'MyPanel', 'Article', 'Article_list'
     ],
     name: 'MyApp',
     controllers: [

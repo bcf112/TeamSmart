@@ -22,7 +22,7 @@ Ext.define('MyApp.controller.Main', {
             list:'#articleList',
             articleList:'#articlePanel',
             titlebar:'#titlebar',
-            backButton:'#titlebar #prevButton',
+            backButton:'#prevButton',
             detailArticle:'#detailArticle'
         },
 
@@ -40,21 +40,16 @@ Ext.define('MyApp.controller.Main', {
     	this.getMainPanel().animateActiveItem(1, { type: "slide", direction: "left" });
     	this.getArticleList().setData(record.data);
     	this.getTitlebar().setTitle(record.data.title);
-    	//this.getBackButton.show();
+    	Ext.getCmp("prevButton").show();
     	
     	localStorage.flag = index;
-    	this.getDetailArticle().on('swipe', this.onSwipe);
-    	console.log("on function!!");
     },
     
     onBackButtonTap: function(button, event){
     	this.getMainPanel().setActiveItem(0);
     	this.getList().deselectAll();
     	this.getTitlebar().setTitle("News");
+    	Ext.getCmp("prevButton").hide();
     },
     
-    onSwipe:function(event){
-    	console.log("swipe!!!");
-    }
-
 });
