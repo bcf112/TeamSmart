@@ -23,7 +23,8 @@ Ext.define('MyApp.controller.Main', {
             articleList:'#articlePanel',
             titlebar:'#titlebar',
             backButton:'#prevButton',
-            detailArticle:'#detailArticle'
+            detailArticle:'#detailArticle',
+            newsListTopImage:'#newsListTopImage',
         },
 
         control: {
@@ -33,7 +34,22 @@ Ext.define('MyApp.controller.Main', {
             '[action=back]':{
             	tap: 'onBackButtonTap'
             },
+            '#getTopImage':{
+            	tap:'getImage',
+            },
+            '#article_font_size_up':{
+            	tap:'font_size_up'
+            },
+            '#article_font_size_down':{
+            	tap:'font_size_down'
+            }
         }
+    },
+    
+    launch: function(app) {
+        console.log(Ext.getStore("Feed").data.length);
+        test = {url:"d", title:"a"};
+        this.getNewsListTopImage().setData(test);
     },
     
     onArticleTap: function(dataview, index, target, record, e, options){
@@ -52,4 +68,19 @@ Ext.define('MyApp.controller.Main', {
     	Ext.getCmp("prevButton").hide();
     },
     
+    getImage: function(button, event){
+    	
+    },
+    
+    font_size_up: function(button, event){
+    	var current = parseInt($("#mainArticle").css("font-size"));
+    	console.log(current);
+    	$("#mainArticle").css("font-size", (++current) + "px");
+    },
+    
+    font_size_down: function(button, event){
+    	var current = parseInt($("#mainArticle").css("font-size"));
+    	console.log(current);
+    	$("#mainArticle").css("font-size", (--current) + "px");
+    }
 });

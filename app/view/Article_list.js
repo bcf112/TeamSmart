@@ -12,11 +12,13 @@ Ext.define("MyApp.view.Article_list",{
 		{
 			xtype:"panel",
 			cls:"newsTop",
+			id:"newsListTopImage",
 			flex:1,
-			html:[
-			    "<div id='articleImage'></br>asdfasdfasdfasdfasdfasdfasdfdd</div>",
+			/**html:[
+			    "<div id='articleImage'></br>기사 제목이 들어갈 자리입니다.</div>",
 			    "<img src='http://static.news.zum.com/images/1/2012/07/29/l_2012072902001116500297551.jpg'/>",
-			].join(""),
+			].join(""),*/
+			tpl:"{url} - {title}",
 		},
 		{
 			xtype:"list",
@@ -30,7 +32,8 @@ Ext.define("MyApp.view.Article_list",{
 	        store: 'Feed',
 	        flex:1,
 		}],
-	}
+	},
+	
 });
 
 $('.articleImage').onclick = function(){

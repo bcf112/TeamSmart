@@ -1,3 +1,7 @@
+/**
+ * 기사 본문
+ * 
+ * */
 Ext.define("MyApp.view.Article",{
 	extend:"Ext.Panel",
 	xtype:"article",
@@ -8,11 +12,43 @@ Ext.define("MyApp.view.Article",{
 		id:"detailArticle",
 		items:[{
 			xtype:"panel",
-			id:"articlePanel",
-			tpl:"{content}",
-			layout:"fit",
+			layout:"vbox",
+			/**id:"articlePanel",
+			tpl:[
+			   "{content}",
+			],
+			
 			styleHtmlContent:true,
-			scrollable:true,
+			scrollable:true,*/
+			items:[
+			   {
+				   xtype:"panel",
+				   layout:"hbox",
+				   items:[
+				     {
+				    	 xtype:"button",
+				    	 text:"글자(+)",
+				    	 id:"article_font_size_up"
+				     },
+				     {
+				    	 xtype:"button",
+				    	 text:"글자(-)",
+				    	 id:"article_font_size_down"
+				     }
+				   ],
+				   flex:0.05,
+			   },
+			   {
+				   xtype:"panel",
+					id:"articlePanel",
+					tpl:[
+					   "<div id='mainArticle'>{content}</div>",
+					],
+					styleHtmlContent:true,
+					scrollable:true,
+					flex:1,
+			   }
+			]
 		}],
 		listeners:{
 			swipe:{
