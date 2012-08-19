@@ -19,13 +19,13 @@ Ext.Loader.setConfig({
 
 Ext.application({
     models: [
-        'News'
+        'News', 'Feed'
     ],
     stores: [
-        'Feed'
+        'Feed', 'Feeds'
     ],
     views: [
-        'MyPanel', 'Article', 'Article_list'
+        'Main', 'MyPanel', 'Article', 'Article_list'
     ],
     name: 'MyApp',
     controllers: [
@@ -33,8 +33,8 @@ Ext.application({
     ],
 
     launch: function() {
-
-        Ext.create('MyApp.view.MyPanel', {fullscreen: true});
+        Ext.create('MyApp.view.Main', {fullscreen: true});
+        
     }
 
 });
