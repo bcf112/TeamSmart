@@ -11,7 +11,7 @@ Ext.define('MyApp.store.Feeds', {
         storeId: 'Feeds',
         proxy: {
             type: 'jsonp',
-            url: 'resources/default.json',
+            url: './resources/default.json',
             reader: {
                 type: 'json',
                 rootProperty: 'addresses'

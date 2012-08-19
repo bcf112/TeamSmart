@@ -1,4 +1,4 @@
-{
+Ext.data.JsonP.callback2({
     "addresses": [
 	    {
 	        "id": 0,
@@ -37,4 +37,4 @@
             "image_url":"http://www.chilnet.co.kr/logo/1238825353.jpg",
         },
     ]
-}
+})
