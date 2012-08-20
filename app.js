@@ -18,16 +18,17 @@ Ext.Loader.setConfig({
 });
 
 Ext.application({
+	name: 'MyApp',
     models: [
-        'News', 'Feed', 'Rank', 'SearchResult'
+        'News', 'Feed', 'Rank', 'SearchResult', 'RssModel', 'MainModel'
     ],
     stores: [
-        'Feed', 'Feeds', 'Ranks', 'SearchResults'
+        'Feed', 'Feeds', 'Ranks', 'SearchResults', 'RssStore', 'MainStore'
     ],
     views: [
         'Main', 'Article', 'Article_list', 'keyword_list', 'Scrap_list', 'RssPanel'
     ],
-    name: 'MyApp',
+    
     controllers: [
         'Main', 'KeywordSearch'
     ],
