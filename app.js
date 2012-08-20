@@ -32,15 +32,9 @@ Ext.application({
         'Main'
     ],
 
-<<<<<<< HEAD
  /*   launch: function() {
 
         Ext.create('MyApp.view.MyPanel', {fullscreen: true});
-=======
-    launch: function() {
-        Ext.create('MyApp.view.Main', {fullscreen: true});
-        
->>>>>>> dd922f5385e5f3a31d046f4f1eebc93b3fd8977d
     }
 */
 });
