@@ -18,7 +18,7 @@ Ext.define('MyApp.view.RssPanel', {
 
     config: {
         layout: {
-            type: 'card'
+            type: 'fit'
         },
         items: [
             {
@@ -59,7 +59,6 @@ Ext.define('MyApp.view.RssPanel', {
                     align: 'stretchmax',
                     type: 'hbox'
                 },
-                title: '',
                 items: [
                     {
                         xtype: 'textfield',
