@@ -46,7 +46,6 @@ Ext.define('MyApp.view.RssPanel', {
                     '<div style="width: 100px; height: 100px; float:left">',
                     '<img src="{rssImage}"><br>',
                     '{rssName}',
-                    '    <Button id="rssNewsAdd" value="add" data-url="{rssUrl}" />',
                     '</div>'
                 ],
                 store: 'rssStore'
