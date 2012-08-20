@@ -24,8 +24,8 @@ Ext.define("MyApp.view.Article_list",{
 			cls:"newsList",
 	        id:"articleList",
 	        itemTpl: [
-	            '<div style="margin-left: 62px;">',
-	            '<img src="{url}"/> <{title}><br>',
+	            '<div>',
+	            	'<img src="{url}"/> <{title}><br>',
 	            '</div>',
 	        ],
 	        store: 'Feed',

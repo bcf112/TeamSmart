@@ -1,4 +1,3 @@
-
 /**
  * 기사 본문
  * 
@@ -86,5 +85,4 @@ Ext.define("MyApp.view.Article",{
 	},
 	
 	
-
 });

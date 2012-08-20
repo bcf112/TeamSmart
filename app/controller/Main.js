@@ -12,7 +12,6 @@
  *
  * Do NOT hand edit this file.
  */
-
 Ext.define('MyApp.controller.Main', {
     extend: 'Ext.app.Controller',
     
@@ -33,6 +32,8 @@ Ext.define('MyApp.controller.Main', {
             feedIcon:"#feedIcon",
             main:"#main",
             homeButton:"#homeButton",
+            mainSearchButton:"#mainSearchButton",
+            articleScrapButton:"#articleScrapButton",
         },
 
         control: {
@@ -54,22 +55,74 @@ Ext.define('MyApp.controller.Main', {
             homeButton:{
             	tap:"homeButtonTap",
             },
+            mainSearchButton:{
+            	tap:"mainSearchButtonTap",
+            },
+            articleScrapButton:{
+            	tap:"articleScrapButtonTap",
+            }
         }
     },
     
+    /**기사 화면에서 오른쪽 상단의 스크랩 버튼을 눌렀을 때*/
+    articleScrapButtonTap:function(button, event){
+    	console.log("스크랩 버튼 탭!!");
+    	//현재 화면에 띄워진 기사에 관한 정보를 얻어서 로컬 스토리지에 저장
+    	
+    	console.log(this.getArticle().items.items[0].items.items[1]._data);
+    	localStorage.test = this.getArticle().items.items[0].items.items[1]._data;
+    	console.log(localStorage.test);
+    	
+    	window.localStorage.setItem("phone", "1,2,3,4");
+    	window.localStorage.setItem("phone-counter", 4);
+    	window.localStorage.setItem("phone-1",
+    			'("id":1, "pno":"p1", "pname":"갤럭시A")');
+    },
+    
+    /**오른쪽 상단의 검색 버튼을 눌렀을 때*/
+    mainSearchButtonTap:function(button, event){
+    	console.log("검색 버튼 탭!!");
+    	this.getMain().animateActiveItem(3, {type:"slide", direction:"left"});
+    	this.getTitlebar().setTitle("키워드 검색");
+    	Ext.getCmp("homeButton").show();
+    },
+    
+    /**왼쪽 상단의 홈 버튼을 눌렀을 때*/
     homeButtonTap:function(button, event){
     	this.getMain().setActiveItem(0);
     	Ext.getCmp("homeButton").hide();
     	this.getList().deselectAll();
+    	this.getTitlebar().setTitle("SMART NEWS");
     },
     
-    feedIconTap:function(list, index, item, e){
-    	if(index=="0"){
+    /**메인 화면에서 feed 아이콘을 눌렀을 때*/
+    feedIconTap:function(list, index, item, record, e){
+    	
+    	if(index=="0"){//'RSS 추가' 아이콘 클릭
+    		this.getTitlebar().setTitle("RSS 추가");
+    		this.getMain().animateActiveItem(5, {type:"slide", direction:"left"});
+    	}else if(index=="1"){ //'키워드 모음' 아이콘 클릭
+    		this.getTitlebar().setTitle("키워드 모음");
     		this.getMain().animateActiveItem(3, {type:"slide", direction:"left"});
-    	}else{
+    	}else if(index=="2"){ //'스크랩 모음' 아이콘 클릭
+    		this.getTitlebar().setTitle("스크랩 모음");
+    		this.getMain().animateActiveItem(4, {type:"slide", direction:"left"});
+    	}else{ //각 신문사 아이콘 클릭
+    		this.getTitlebar().setTitle(record.data.name);
     		this.getMain().animateActiveItem(1, {type:"slide", direction:"left"});
+    		var store = Ext.getStore("Feed");
+        	store.getProxy().setUrl("https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://iamapark.cafe24.com/fullrss/makefulltextfeed.php?url=" + record.data.url + "&num=100");
+        	store.load({
+        		callback:function(records, operation, success){
+        			//console.log(records);
+        			//this.getList().setData(records);
+        			this.getList().refresh();
+        		},
+        		scope:this
+        	});
+        	
+        	//console.log(Ext.getStore("Feed"));
     	}
-    	console.log("tap!!");
     	Ext.getCmp("homeButton").show();
     },
     
@@ -79,6 +132,7 @@ Ext.define('MyApp.controller.Main', {
         //this.getNewsListTopImage().setData(test);
     },
     
+    /**기사 리스트에서 기사를 눌렀을 때*/
     onArticleTap: function(dataview, index, target, record, e, options){
     	this.getMain().animateActiveItem(2, { type: "slide", direction: "left" });
     	this.getArticleList().setData(record.data);
@@ -86,8 +140,10 @@ Ext.define('MyApp.controller.Main', {
     	Ext.getCmp("prevButton").show();
     	
     	localStorage.flag = index;
+    	Ext.getCmp("articleScrapButton").show();
     },
     
+    /**뒤로가기 버튼을 눌렀을 때*/
     onBackButtonTap: function(button, event){
     	this.getMain().setActiveItem(1);
     	this.getList().deselectAll();
@@ -95,12 +151,14 @@ Ext.define('MyApp.controller.Main', {
     	Ext.getCmp("prevButton").hide();
     },
     
+    /**기사 화면에서 글자 키우기 버튼을 눌렀을 때*/
     font_size_up: function(button, event){
     	var current = parseInt($("#mainArticle").css("font-size"));
     	console.log(current);
     	$("#mainArticle").css("font-size", (++current) + "px");
     },
     
+    /**기사 화면에서 글자 줄이기 버튼을 눌렀을 때*/
     font_size_down: function(button, event){
     	var current = parseInt($("#mainArticle").css("font-size"));
     	console.log(current);

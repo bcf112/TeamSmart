@@ -19,22 +19,22 @@ Ext.Loader.setConfig({
 
 Ext.application({
     models: [
-        'News', 'Feed'
+        'News', 'Feed', 'Rank', 'SearchResult'
     ],
     stores: [
-        'Feed', 'Feeds'
+        'Feed', 'Feeds', 'Ranks', 'SearchResults'
     ],
     views: [
-        'Main', 'MyPanel', 'Article', 'Article_list'
+        'Main', 'Article', 'Article_list', 'keyword_list', 'Scrap_list', 'RssPanel'
     ],
     name: 'MyApp',
     controllers: [
-        'Main'
+        'Main', 'KeywordSearch'
     ],
 
- /*   launch: function() {
-
-        Ext.create('MyApp.view.MyPanel', {fullscreen: true});
+    launch: function() {
+        Ext.create('MyApp.view.Main', {fullscreen: true});
+        
     }
-*/
+
 });

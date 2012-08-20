@@ -9,8 +9,8 @@ Ext.define("MyApp.view.Main", {
 		},
 		
 		items:[{
-			xtype:"toolbar",
-			title:"Smart NEWS!!!",
+			xtype:"titlebar",
+			title:"SMART NEWS",
 			docked:"top",
 			id:"titlebar",
 			items:[{
@@ -20,12 +20,31 @@ Ext.define("MyApp.view.Main", {
             	action:"back",
             	ui:"back",
             	hidden:true,
+            	iconAlign:"right",
             },{
             	xtype:"button",
             	id:"homeButton",
             	iconCls:"home",
             	iconMask:true,
             	ui:"action-round",
+            	hidden:true,
+            	iconAlign:"right",
+            },{
+            	xtype:"button",
+            	id:"mainSearchButton",
+            	text:'',
+            	iconCls:"search",
+            	iconMask:true,
+            	iconAlign:"right",
+            	align:"right",
+            },{
+            	xtype:"button",
+            	id:"articleScrapButton",
+            	text:"",
+            	iconCls:"star",
+            	iconMask:true,
+            	iconAlign:"right",
+            	align:"right",
             	hidden:true,
             }]
 		},{
@@ -48,8 +67,11 @@ Ext.define("MyApp.view.Main", {
 		},{ 
 			xtype:"article"        //기사 리스트에서 항목을 누르면 해당 기사 전문이 나오는 패널
 		},{
-			xtype:"panel",   //메인화면에서 '키워드 모음' 아이콘을 누르면 나오는 패널
-			html:"키워드 리스트가 들어갈 자리입니다.",
+			xtype:"keywordPanel",   //메인화면에서 '키워드 모음' 아이콘을 누르면 나오는 패널
+		},{
+			xtype:"scrapPanel",     //메인화면에서 '스크랩 모음' 아이콘을 누르면 나오는 패널
+		},{
+			xtype:"rsspanel",       //메인화면에서 'RSS 추가' 아이콘을 누르면 나오는 패널
 		}]
 	}
 });
