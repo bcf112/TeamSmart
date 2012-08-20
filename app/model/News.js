@@ -38,7 +38,7 @@ Ext.define('MyApp.model.News', {
             {
             	mapping: 'mediaGroups[0].contents[0].url',
             	name: 'url',
-            }
+            },
         ]
     }
 });

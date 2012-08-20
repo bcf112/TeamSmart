@@ -15,6 +15,11 @@
 
 Ext.define('MyApp.controller.Main', {
     extend: 'Ext.app.Controller',
+    
+    start:function(){
+    		alert("start");
+    },
+    
     config: {
         refs: {
             mainPanel: 'mainpanel',
@@ -22,8 +27,12 @@ Ext.define('MyApp.controller.Main', {
             list:'#articleList',
             articleList:'#articlePanel',
             titlebar:'#titlebar',
-            backButton:'#titlebar #prevButton',
-            detailArticle:'#detailArticle'
+            backButton:'#prevButton',
+            detailArticle:'#detailArticle',
+            newsListTopImage:'#newsListTopImage',
+            feedIcon:"#feedIcon",
+            main:"#main",
+            homeButton:"#homeButton",
         },
 
         control: {
@@ -33,28 +42,68 @@ Ext.define('MyApp.controller.Main', {
             '[action=back]':{
             	tap: 'onBackButtonTap'
             },
+            '#article_font_size_up':{
+            	tap:'font_size_up'
+            },
+            '#article_font_size_down':{
+            	tap:'font_size_down'
+            },
+            feedIcon:{
+            	itemtap:'feedIconTap',
+            },
+            homeButton:{
+            	tap:"homeButtonTap",
+            },
         }
     },
     
+    homeButtonTap:function(button, event){
+    	this.getMain().setActiveItem(0);
+    	Ext.getCmp("homeButton").hide();
+    	this.getList().deselectAll();
+    },
+    
+    feedIconTap:function(list, index, item, e){
+    	if(index=="0"){
+    		this.getMain().animateActiveItem(3, {type:"slide", direction:"left"});
+    	}else{
+    		this.getMain().animateActiveItem(1, {type:"slide", direction:"left"});
+    	}
+    	console.log("tap!!");
+    	Ext.getCmp("homeButton").show();
+    },
+    
+    launch: function(app) {
+    	//console.log(Ext.getStore("Feed").data.keys.length);
+        test = {url:"이미지 주소", title:"타이틀"};
+        //this.getNewsListTopImage().setData(test);
+    },
+    
     onArticleTap: function(dataview, index, target, record, e, options){
-    	this.getMainPanel().animateActiveItem(1, { type: "slide", direction: "left" });
+    	this.getMain().animateActiveItem(2, { type: "slide", direction: "left" });
     	this.getArticleList().setData(record.data);
     	this.getTitlebar().setTitle(record.data.title);
-    	//this.getBackButton.show();
+    	Ext.getCmp("prevButton").show();
     	
     	localStorage.flag = index;
-    	this.getDetailArticle().on('swipe', this.onSwipe);
-    	console.log("on function!!");
     },
     
     onBackButtonTap: function(button, event){
-    	this.getMainPanel().setActiveItem(0);
+    	this.getMain().setActiveItem(1);
     	this.getList().deselectAll();
     	this.getTitlebar().setTitle("News");
+    	Ext.getCmp("prevButton").hide();
     },
     
-    onSwipe:function(event){
-    	console.log("swipe!!!");
+    font_size_up: function(button, event){
+    	var current = parseInt($("#mainArticle").css("font-size"));
+    	console.log(current);
+    	$("#mainArticle").css("font-size", (++current) + "px");
+    },
+    
+    font_size_down: function(button, event){
+    	var current = parseInt($("#mainArticle").css("font-size"));
+    	console.log(current);
+    	$("#mainArticle").css("font-size", (--current) + "px");
     }
-
 });
